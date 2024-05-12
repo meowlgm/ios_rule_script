@@ -30,11 +30,11 @@ jobs:
       - name: Fetch Upstream
         run: |
           git fetch upstream
-          git checkout main
+          git checkout master
 
       # Step 5: Merge changes from upstream, favoring their changes in conflicts
       - name: Merge Upstream Changes
-        run: git merge upstream/main --strategy-option theirs
+        run: git merge upstream/master --strategy-option theirs
 
       # Step 6: Modify files
       - name: Modify Files
@@ -47,4 +47,4 @@ jobs:
         run: |
           git add .
           git commit -m "Sync from upstream and modify files"
-          git push origin main
+          git push origin master
