@@ -39,8 +39,9 @@ jobs:
       # Step 6: Modify files
       - name: Modify Files
         run: | 
-          sed -i '/^# IP-ASN/d' rule/Clash/OpenAI/OpenAI.yaml
-          sed -i '/^# IP-ASN/d' rule/Clash/OpenAI/OpenAI.list
+          sed -i '/IP-ASN/d' rule/Clash/OpenAI/OpenAI.yaml
+          sed -i '/IP-ASN/d' rule/Clash/OpenAI/OpenAI.list
+          sed -i '/IP-ASN/d' rule/Clash/OpenAI/OpenAI_No_Resolve.yaml
 
       # Step 7: Commit and push changes
       - name: Commit and Push Changes
