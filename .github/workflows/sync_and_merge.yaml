@@ -41,9 +41,13 @@ jobs:
         run: |
           find rule/Clash -type f ! -name "*.md" -exec sed -i '/IP-ASN/d' {} \;
 
-      # Step 7: Commit and push changes
+      # Step 7: Check for changes and commit if any
       - name: Commit and Push Changes
         run: |
-          git add .
-          git commit -m "Sync from upstream and modify files"
-          git push origin master
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Sync from upstream and modify files"
+            git push origin master
+          else
+            echo "No changes to commit"
+          fi
